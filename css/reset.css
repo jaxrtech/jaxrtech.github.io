@@ -40,9 +40,13 @@ html {
 
 /* Responsive images and other embedded objects */
 /* if you don't have full control over `img` tags (if you have to overcome attributes), consider adding height: auto */
+
+/* This breaks the SVG diagram */
+/*
 img,
 object,
 embed {max-width: 100%;}
+*/
 
 /*
    Note: keeping IMG here will cause problems if you're using foreground images as sprites.
