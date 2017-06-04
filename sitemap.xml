@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://jbowden.me/license/</loc>
+    <lastmod>2017-06-04T03:42:32-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/on-essentially-comonads/</loc>
+    <lastmod>2016-07-27T21:20:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/on-ctfe/</loc>
+    <lastmod>2016-07-25T02:40:49+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/on-polymorphic-row-types/</loc>
+    <lastmod>2016-07-13T06:03:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/using-structural-types-with-a-lot-of-type-inference/</loc>
+    <lastmod>2016-07-13T02:40:38+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/on-mainstream-fp/</loc>
+    <lastmod>2016-07-08T23:19:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/mumps-side-note/</loc>
+    <lastmod>2016-07-07T01:39:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/a-core-language-with-extensible-language-libraries/</loc>
+    <lastmod>2016-07-03T00:20:23+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/intersection-types/</loc>
+    <lastmod>2016-06-30T10:27:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/reddit/union-types/</loc>
+    <lastmod>2016-06-30T08:38:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/ceylon/</loc>
+    <lastmod>2016-06-30T08:38:06+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/compilers/</loc>
+    <lastmod>2016-07-25T02:40:49+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/ctfe/</loc>
+    <lastmod>2016-07-25T02:40:49+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/dlang/</loc>
+    <lastmod>2016-07-25T02:40:49+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/elm/</loc>
+    <lastmod>2016-07-08T23:19:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/fsharp/</loc>
+    <lastmod>2016-07-25T02:40:49+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/ideas/</loc>
+    <lastmod>2016-07-03T00:20:23+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/industry/</loc>
+    <lastmod>2016-07-08T23:19:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/</loc>
+    <lastmod>2016-07-27T21:20:11+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/posts/</loc>
+    <lastmod>2016-07-27T21:20:11+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/programming-languages/</loc>
+    <lastmod>2016-07-27T21:20:11+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/protonlang/</loc>
+    <lastmod>2016-07-13T02:40:38+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/type-systems/</loc>
+    <lastmod>2016-07-27T21:20:11+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/typescript/</loc>
+    <lastmod>2016-06-30T08:38:06+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://jbowden.me/categories/videos/</loc>
+    <lastmod>2016-07-08T23:19:50+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

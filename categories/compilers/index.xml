@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Compilers on Josh Bowden</title>
+    <link>https://jbowden.me/categories/compilers/</link>
+    <description>Recent content in Compilers on Josh Bowden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Jul 2016 02:40:49 +0000</lastBuildDate>
+    
+	<atom:link href="https://jbowden.me/categories/compilers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On CTFE</title>
+      <link>https://jbowden.me/posts/reddit/on-ctfe/</link>
+      <pubDate>Mon, 25 Jul 2016 02:40:49 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/on-ctfe/</guid>
+      <description>Snipped and backdated from a Reddit comment of mine.
+ The biggest win for compile-time features is eliminating the need for clunky, external build tools when you need to generate boilerplate code. (See F#&amp;rsquo;s type providers)
+Instead, you can write functions that run at compile-time to generate ASTs for you instead of mudging with text source code.
+This feature in general is called compile-time function execution (CTFE).
+Pros The common scenario is that you have a pre-existing schema you want to generate code from (e.</description>
+    </item>
+    
+    <item>
+      <title>“A Core Language with Extensible Language Libraries”</title>
+      <link>https://jbowden.me/posts/reddit/a-core-language-with-extensible-language-libraries/</link>
+      <pubDate>Sun, 03 Jul 2016 00:20:23 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/a-core-language-with-extensible-language-libraries/</guid>
+      <description>Click to view on seperate page&amp;hellip;
+ /u/jaxrtech
+True, the proposal is very abstract. To be a bit more concrete, here&amp;rsquo;s what trying to create a hypothetical implementation might look like running down pipeline from the diagram:
+ Clients: Just about any IDE or editor has an API for code completion, rename refactoring, etc. Given your favorite editor, we would just need &amp;gt;to write a shim for to talk over platform&amp;rsquo;s protocol to interface the API.</description>
+    </item>
+    
+  </channel>
+</rss>

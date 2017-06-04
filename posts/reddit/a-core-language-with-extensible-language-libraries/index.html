@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>“A Core Language with Extensible Language Libraries” &middot; Josh Bowden</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.21" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="“A Core Language with Extensible Language Libraries” &middot; Josh Bowden">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="“A Core Language with Extensible Language Libraries” &middot; Josh Bowden">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href="https://jbowden.me//css/all.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Josh Bowden" href="https://jbowden.me//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar sidebar-img-container pure-u-1 pure-u-md-1-4">
+
+    <div class="sidebar-img"></div>
+
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://jbowden.me/">Josh Bowden</a></h1>
+            <h2 class="brand-tagline"> Software. Industry. Academia. </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://reddit.com/u/jaxrtech"><i class="fa fa-reddit-alien"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/jaxrtech"><i class="fa fa-github-alt"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://stackoverflow.com/users/809572/josh-bowden "><i class="fa fa-stack-overflow"></i></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://jbowden.me//index.xml"><i class="fa fa-rss"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="sidebar-footer footer">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li><a href="/license">Licensed under CC BY-SA 4.0 &amp; MIT License</a>
+</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">03 Jul 2016, 00:20</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/a-core-language-with-extensible-language-libraries/" class="post-title">“A Core Language with Extensible Language Libraries”</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-compilers" href="https://jbowden.me//categories/compilers">compilers</a><a class="post-category post-category-ideas" href="https://jbowden.me//categories/ideas">ideas</a>
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        <p><a href="/openlang-proposal/">Click to view on seperate page&hellip;</a></p>
+
+<blockquote>
+<p>/u/jaxrtech</p>
+
+<p>True, the proposal is very abstract. To be a bit more concrete, here&rsquo;s what trying to create a <strong>hypothetical</strong> implementation might look like running down pipeline from the diagram:</p>
+
+<ul>
+<li><p><strong>Clients:</strong> Just about any IDE or editor has an API for code completion, rename refactoring, etc. Given your favorite editor, we would just need &gt;to write a shim for to talk over platform&rsquo;s protocol to interface the API.</p></li>
+
+<li><p><strong>Protocol:</strong> There are tons of libraries already for writing protocols (e.g. ProtoBufs, msgpack, zmq). Messages can be sent over IPC or plain &gt;old TCP sockets. You would just have to design an API.</p></li>
+
+<li><p><strong>Compilation Server</strong>: This could be a typical CLI program which controls the compilation process. Maybe you would run something like:</p>
+
+<pre><code>proton compile main.foo --lang jaxrtech/foolang
+</code></pre>
+
+<p>It could then read a <code>language.json</code> I wrote to determine which libraries my <em>Foolang</em> depends on and start each of them up as a service to start &gt;compiling.</p></li>
+
+<li><p><strong>Syntax Library</strong>: This can be written in anything you want (it could be Java, node.js, it doesn&rsquo;t matter) as long as it talks over the &gt;protocol, can properly parse text into a syntax tree (and can do the reverse as well), and can translate everything into the core language.</p></li>
+
+<li><p><strong>Semantic Libraries</strong>: Has more or less the same as building a syntax library except you&rsquo;re just only translating between different grammars. &gt;Any language can do this.</p></li>
+
+<li><p><strong>Core Language Service</strong>: The core language can be abstraction layer on top of LLVM, could compile to JS or C, the JVM or the CLR.</p></li>
+</ul>
+</blockquote>
+
+<img src="/openlang-proposal/diagram.svg" alt="" class="pure-img" >
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="content-footer footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li>All written content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons ShareAlike 4.0 International License</a>.
+<br/>
+All code is licensed under a MIT License unless otherwise stated.</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+<script src="https://jbowden.me//js/all.min.js"></script>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-xxxxxx-xx', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

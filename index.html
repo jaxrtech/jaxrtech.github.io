@@ -1,28 +1,446 @@
-<!doctype html>
 
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>jaxrtech | home</title>
-  <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
-  <header>
-    <h1>jaxrtech's stuff</h1>
-    <hr/>
-  </header>
-  
-  <article>
-    <p>Unfortunatly, there is not <em>too</em> much to see here just yet...</p>
+    <title>Blog &middot; Josh Bowden</title>
+
+    <meta name="description" content="Software. Industry. Academia.">
+
+    <meta name="generator" content="Hugo 0.21" />
+    <meta name="twitter:card" content="summary">
     
-    <dl>
-      <a href="openlang-proposal/index.html">
-      <dt>2016-07-02</dt>
-      <dd>/r/openlang proposal: "A Core Language with Extensible Language Libraries"</dd>
+    <meta name="twitter:title" content="Blog &middot; Josh Bowden">
+    <meta name="twitter:description" content="Software. Industry. Academia.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Blog &middot; Josh Bowden">
+    <meta property="og:description" content="Software. Industry. Academia.">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href="https://jbowden.me//css/all.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Josh Bowden" href="https://jbowden.me//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar sidebar-img-container pure-u-1 pure-u-md-1-4">
+
+    <div class="sidebar-img"></div>
+
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://jbowden.me/">Josh Bowden</a></h1>
+            <h2 class="brand-tagline"> Software. Industry. Academia. </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://reddit.com/u/jaxrtech"><i class="fa fa-reddit-alien"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/jaxrtech"><i class="fa fa-github-alt"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://stackoverflow.com/users/809572/josh-bowden "><i class="fa fa-stack-overflow"></i></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://jbowden.me//index.xml"><i class="fa fa-rss"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="sidebar-footer footer">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li><a href="/license">Licensed under CC BY-SA 4.0 &amp; MIT License</a>
+</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                
+                <h1 class="content-subhead">27 Jul 2016, 21:20</h1>
+                <article class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/on-essentially-comonads/" class="post-title">On (Essentially) Comonads</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-type systems" href="https://jbowden.me//categories/type-systems">type systems</a><a class="post-category post-category-programming languages" href="https://jbowden.me//categories/programming-languages">programming languages</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <blockquote>
+<p>Snipped and backdated from a <a href="https://www.reddit.com/r/openlang/comments/4tnir6/proposal_one_way_to_mix_oop_functional/d5tjd3r/">Reddit comment</a> of mine.</p>
+</blockquote>
+
+<p>That&rsquo;s an interesting way to put. It&rsquo;s almost like const correctness or checked exceptions (done right) for side-effects since you have to maintain purity with what you are calling or otherwise becoming impure.</p>
+
+<blockquote>
+<p>there might need to be some sort of distinction between a class containing only pure functions and immutable fields, and one containing procedures and/or mutable fields</p>
+</blockquote>
+
+<p>Yes, const correctness for types, fields, procedures, functions, and everything would be useful to know what can change what.</p>
+
+<blockquote>
+<p>for a class to be pure it must contain only functions. Similarly, [&hellip;] a function can contain only expressions, including other functions</p>
+</blockquote>
+
+<p>Makes sense. Impure code can call what it wants. Pure functions can only call pure functions. The only thing is that if you want a drop of impurity, everything starts becoming impure and it doesn&rsquo;t convey much of any information.</p>
+
+<p>Even if everything was marked as pure or impure, cost or mutable, we don&rsquo;t know if an impure procedure is writing to a file, executing a system command, sending a message over sockets, etc. We would want more granularity to know side-effects procedures are causing down the call tree.</p>
+
+<p>Similar to checked exceptions or dependency injection, an idea is that you could have a separate parameter list for resources and side-effects a procedure requires. It&rsquo;s similar to the ideas in /u/DanielWaterworth&rsquo;s <a href="https://github.com/DanielWaterworth/plastic">plastic language</a> or free moands. I also talked about this idea a while back in <a href="https://www.reddit.com/r/openlang/comments/4rdyb7/official_paradigm_discussion_functional/d50lkw7">this comment thread</a> for reference.</p>
+
+<p>Example in some made up syntax:</p>
+
+<pre><code>// `class` or whatever you want to call this
+class Cache {
+
+  ...
+
+  // technically `self` would be mutable the way I wrote this
+  fn get(self, key: String)(effects @fs: FileSystem) {
+    if (self.contains(key)) {
+      return self[key]
+    }
+
+    let value = @fs.read(key)
+    self[key] = value
+    return value;
+  }
+}
+
+// uses the default, global, &quot;real&quot; file system (&quot;business as usual&quot;)
+cache.getFromCache(&quot;foo&quot;)
+
+// uses dummy file system for unit testing
+chache.getFromCache(&quot;bar&quot;)(DummyFileSystem)
+</code></pre>
+
+                    </div>
+                </article>
+                
+                <h1 class="content-subhead">25 Jul 2016, 02:40</h1>
+                <article class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/on-ctfe/" class="post-title">On CTFE</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-compilers" href="https://jbowden.me//categories/compilers">compilers</a><a class="post-category post-category-ctfe" href="https://jbowden.me//categories/ctfe">ctfe</a><a class="post-category post-category-fsharp" href="https://jbowden.me//categories/fsharp">fsharp</a><a class="post-category post-category-dlang" href="https://jbowden.me//categories/dlang">dlang</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<blockquote>
+<p>Snipped and backdated from a <a href="https://www.reddit.com/r/openlang/comments/4uex61/topic_metaprogramming_and_compiletime_features_in/d5phpdk/">Reddit comment</a> of mine.</p>
+</blockquote>
+
+<p>The biggest win for compile-time features is eliminating the need for clunky, external build tools when you need to generate boilerplate code. (See <a href="http://stackoverflow.com/a/4712064/809572">F#&rsquo;s type providers</a>)</p>
+
+<p>Instead, you can write functions that run at compile-time to generate ASTs for you instead of mudging with text source code.</p>
+
+<p>This feature in general is called <a href="https://en.wikipedia.org/wiki/Compile_time_function_execution">compile-time function execution (CTFE)</a>.</p>
+
+<hr />
+
+<h2 id="pros">Pros</h2>
+
+<p>The common scenario is that you have a pre-existing schema you want to generate code from (e.g. an SQL database or a web service using JSON, XML, Protobufs, <abbr title="SOAP">or an overhyped four-letter acronym from the early-2000s</abbr>).</p>
+
+<p>CTFE solves lots of problems with &ldquo;traditional&rdquo; text-based code-gen:</p>
+
+<ul>
+<li><p>Since you&rsquo;re generating text instead of an actual AST, there is nothing stopping the tool from generating invalid source code the doesn&rsquo;t compile. You end up working backward figuring out where you went wrong.</p>
+
+<ul>
+<li>&hellip;with CTFE, you&rsquo;re working with the AST of the language (along the lines of Lisp macros that are executed at compile-time). Given a strongly typed language, invalid ASTs are compiler errors in the first place.</li>
+</ul></li>
+
+<li><p>Generated source code can easily get out of sync with the source schema (e.g. forgot to regen the code after adding a column, etc.)</p>
+
+<ul>
+<li>&hellip;with CTFE, the schema can be read during development time to allow for code completion. Out of sync code becomes a compiler error, not a run-time error.</li>
+</ul></li>
+
+<li><p>Controlling the source code generated generally is limited or non-existent, or requires dealing with extra configuration files (or some dynamically-loaded library reflection magic).</p>
+
+<ul>
+<li>&hellip;with CTFE, everything is just part of the code base; you can just pass a value to a function.</li>
+</ul></li>
+</ul>
+
+<p>Other nice CTFE use cases:</p>
+
+<ul>
+<li>&ldquo;Strongly typed&rdquo; strings: compile JSON and XML strings into actual values, safe string interpolation</li>
+<li>Partial evaluation: pre-compute expressions ahead-of-time instead of at runtime (C++&rsquo;s <code>constexpr</code>)</li>
+<li>AST metaprogramming: generate types, functions bodies, etc.</li>
+<li>Anything else you might want to do at compile-time&hellip;</li>
+</ul>
+
+<hr />
+
+<h2 id="cons">Cons</h2>
+
+<p>The major con with implementing CTFE is that introduces a great deal of complexity into the compiler implementation and needs to be well designed.</p>
+
+<ul>
+<li><p>You end up with a dependency graph of compile-time and run-time code that depends on the output of a compile-time function (hopefully you have a keyword that distinguishes what functions you intend to CTFE).</p></li>
+
+<li><p>Because of that, you have to figure the order in which you need to run each compile-time function before compiling the dependent, &ldquo;regular&rdquo; code that executes at run-time.</p></li>
+
+<li><p>CTFE is going to run really slow unless you can run as much as possible in parallel.</p></li>
+</ul>
+
+                    </div>
+                </article>
+                
+                <h1 class="content-subhead">13 Jul 2016, 06:03</h1>
+                <article class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/on-polymorphic-row-types/" class="post-title">On Polymorphic Row Types</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-type systems" href="https://jbowden.me//categories/type-systems">type systems</a><a class="post-category post-category-programming languages" href="https://jbowden.me//categories/programming-languages">programming languages</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <blockquote>
+<p>Snipped and backdated from a <a href="https://www.reddit.com/r/openlang/comments/4skvb9/idea_using_structural_types_with_a_lot_of_type/d5a9otc/">Reddit comment</a> of mine.</p>
+</blockquote>
+
+<p>There are a lot of interesting similarities here. I also found the original paper that the blog post was referencing: <a href="https://web.archive.org/web/20110817024554/http://legacy.cs.uu.nl/daan/download/papers/fclabels.pdf">&ldquo;First-class labels for extensible rows&rdquo;</a> with discussion on <a href="http://lambda-the-ultimate.org/node/174">Lambda the Ultimate</a>.</p>
+
+<p>I didn&rsquo;t as prominently show it in the example, but my examples use structural typing <em>and</em> <a href="https://www.reddit.com/r/openlang/comments/4qjhxg/functional/d4tqjmk">union</a> and <a href="https://www.reddit.com/r/openlang/comments/4qjhxg/functional/d4tsejw">intersection types</a> (examples from my other comments).</p>
+
+<p>It seems to me that what I&rsquo;m suggesting effectively is the same as using row polymorphism as shown in the blog post. The example from the blog post again:</p>
+
+<pre><code>f :: {a: Number, b: Number | ρ} -&gt; Number
+let f x = x with {sum: x.a + x.b}
+let answer = f {a: 1, b: 2, c: 100}
+
+// &quot;regular&quot; structural typing
+answer :: {a: Number, b: Number, sum: Number}
+
+// row polymorphism
+answer :: {a: Number, b: Number, c: Number, sum: Number}
+</code></pre>
+
+<p>And back to my made up syntax, the example above should be equivalent to the following:</p>
+
+<pre><code>f &lt;'x&gt; :: 'x: { a: Number, b: Number } -&gt; 'x &amp; { sum: Number } 
+fn f(x) {
+  x with { sum: x.a + x.b }
+}
+
+answer :: f('x) when 'x = { a: Number, b: Number, c: Number }
+       :: { a: Number, b: Number, c: Number } &amp; { sum: Number }
+       :: { a: Number, b: Number, c: Number, sum: Number }
+let answer = f { a: 1, b: 2, c: 100 }
+</code></pre>
+
+<p>To break the important line down:</p>
+
+<pre><code>f &lt;'x&gt; :: 'x: { a: Number, b: Number } -&gt; 'x &amp; { sum: Number } 
+</code></pre>
+
+<ul>
+<li><code>&lt;'x&gt;</code> declares the type variable <code>'x</code> in the scope of the type definition</li>
+
+<li><p>the function take one parameter of type <code>'x: { a: Number, b: Number }</code> (which essentially uses subtyping) to say that the type variable <code>'x</code> needs to <em>at least</em> have the structure <code>{ a: Number, b: Number }</code>.</p></li>
+
+<li><p>the function&rsquo;s return type is <code>'x &amp; { sum: Number }</code> which says the return type must be whatever type variable <code>'x</code> actually is and, in addition, <em>must also</em> have the structure <code>{ sum: Number }</code>.</p></li>
+</ul>
+
+                    </div>
+                </article>
+                
+                <h1 class="content-subhead">13 Jul 2016, 02:40</h1>
+                <article class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/using-structural-types-with-a-lot-of-type-inference/" class="post-title">Using structural types with a lot of type inference</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-type systems" href="https://jbowden.me//categories/type-systems">type systems</a><a class="post-category post-category-programming languages" href="https://jbowden.me//categories/programming-languages">programming languages</a><a class="post-category post-category-protonlang" href="https://jbowden.me//categories/protonlang">protonlang</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        
+
+<blockquote>
+<p>Snipped and backdated from a previous <a href="https://www.reddit.com/r/openlang/comments/4skvb9/idea_using_structural_types_with_a_lot_of_type/">Reddit post</a> of mine.</p>
+</blockquote>
+
+<p>As /u/x-paste was suggesting in the <a href="https://www.reddit.com/r/openlang/comments/4scl2c/official_object_orientation_discussion/">[Official] Object Orientation Discussion</a> thread about ad-hoc data structures, I still think you can get the niceness and flexibility of just throwing code togeather while still having strong typing.</p>
+
+<p>That or have gradual typing to avoid the messy example I wrote for the otherwise simple <code>eval()</code> and can just use <code>any</code> like in TypeScript and don&rsquo;t bother with being extremely sound and specific.</p>
+
+<p>Or you would still check everything at runtime but be a bit more smart about it like using guards in Elixir (which runs on Erlang):</p>
+
+<p><a href="http://blog.johanwarlander.com/2015/07/19/on-elixir-and-static-typing">http://blog.johanwarlander.com/2015/07/19/on-elixir-and-static-typing</a></p>
+
+<p>Either way, I&rsquo;ve thrown together some general ideas and wanted to see what you guys think. I&rsquo;m questioning how far you really want to be able to take static typing with type inference. I know from the poll a sizeable amount of people were looking for something functional along with OO.</p>
+
+<h3 id="dealing-with-nominal-and-structural-typing">Dealing with Nominal and Structural Typing</h3>
+
+<p>I was thinking about a way to &ldquo;soundly&rdquo; deal with having a type system where you could have both nominal and structural typing and be able to use each where appropriate. And likewise, wrote an example of how this would work in some fake syntax:</p>
+
+<p><a href="https://gist.github.com/jaxrtech/591555b239a97844183ba48da8d82339">https://gist.github.com/jaxrtech/591555b239a97844183ba48da8d82339</a></p>
+
+<h3 id="structural-type-inference">Structural Type Inference</h3>
+
+<p>I when a bit crazy with how powerful the type system can be and what is offered for free with type inference alone.</p>
+
+<p>I wanted to see if it was possible to get away with inferring the type of something you probably could write in JavaScript or a dynamic language where you&rsquo;re just passing anonymous data structures everywhere.</p>
+
+<p><a href="https://gist.github.com/jaxrtech/18c96a4a1f0a4da50152e54982ef0987">https://gist.github.com/jaxrtech/18c96a4a1f0a4da50152e54982ef0987</a></p>
+
+                    </div>
+                </article>
+                
+                <h1 class="content-subhead">08 Jul 2016, 23:19</h1>
+                <article class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/on-mainstream-fp/" class="post-title">On Mainstream FP</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-industry" href="https://jbowden.me//categories/industry">industry</a><a class="post-category post-category-programming languages" href="https://jbowden.me//categories/programming-languages">programming languages</a><a class="post-category post-category-videos" href="https://jbowden.me//categories/videos">videos</a><a class="post-category post-category-elm" href="https://jbowden.me//categories/elm">elm</a>
+                            
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+                        <blockquote>
+<p>Snipped and backdated from a <a href="https://www.reddit.com/r/openlang/comments/4rv5np/suggestion_proton_haskell_scheme_lisp/d54xek4/">Reddit comment</a> of mine.</p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+<p>If functional programming is so great, why is it still niche? We have a product that can practically eliminate runtime errors, make refactoring much easier, lighten the testing burden, all while being quite delightful to use. What’s the hold up?</p>
+
+<p>One factor is that we make things artificially hard to learn, sometimes with a seemingly pathological glee.</p>
+</blockquote>
+
+<p>This is from the <a href="http://www.elmbark.com/2016/03/16/mainstream-elm-user-focused-design">Elm&rsquo;s &ldquo;Let Be Mainstream!&rdquo; talk</a>. We literally could use it as a manifesto for building the functional language people <em>actually use</em> and <em>actually understand</em> (and isn&rsquo;t stuck running on JavaScript).</p>
+
+<p><strong>Seriously, what language already does that?</strong></p>
+
+<p>Hell, <strong>we don&rsquo;t even <em>need</em> to use the word &ldquo;monad&rdquo;</strong>. What honestly is the benefit of using the word &ldquo;monad&rdquo; other than to &ldquo;sound smart&rdquo; and for newcomers to Google it and become even more confused than they were already? (Sure, knowing something is a monad is probably useful to the miniscule group of people actually understand it.)</p>
+
+<p>Take a look at Elm&rsquo;s documentation. <a href="http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Maybe#andThen">Elm&rsquo;s documentation for <code>Maybe.andThen</code></a> describes in absolute simple terms how to &ldquo;chain together many computations that may fail.&rdquo; It describes in plain English how to practically use &ldquo;monads&rdquo; without even using the word.</p>
+
+<p>Point being, <strong>we don&rsquo;t need to make things to unnecessarily complicated.</strong> You already have Haskell for that.</p>
+
+                    </div>
+                </article>
+                
+            </div>
+            <div class="posts-footer">
+                
+<div class="pagination">
+  <nav role="pagination" class="post-list-pagination">
+    
+    <span class="post-list-pagination-item post-list-pagination-item-current">Page 1 of 2</span>
+    
+      <a href="/pages/2/" class="post-list-pagination-item pure-button post-list-pagination-item-next">
+        Older&nbsp;<i class="fa fa-angle-double-right"></i>
       </a>
-    </dl>
-  </article>
+    
+  </nav>
+</div>
+
+
+                <div class="content-footer footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li>All written content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons ShareAlike 4.0 International License</a>.
+<br/>
+All code is licensed under a MIT License unless otherwise stated.</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+<script src="https://jbowden.me//js/all.min.js"></script>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-xxxxxx-xx', 'auto');
+ga('send', 'pageview');
+
+</script>
+
 </body>
 </html>

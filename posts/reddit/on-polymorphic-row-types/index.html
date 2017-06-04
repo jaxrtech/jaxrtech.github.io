@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>On Polymorphic Row Types &middot; Josh Bowden</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.21" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="On Polymorphic Row Types &middot; Josh Bowden">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="On Polymorphic Row Types &middot; Josh Bowden">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href="https://jbowden.me//css/all.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Josh Bowden" href="https://jbowden.me//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar sidebar-img-container pure-u-1 pure-u-md-1-4">
+
+    <div class="sidebar-img"></div>
+
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://jbowden.me/">Josh Bowden</a></h1>
+            <h2 class="brand-tagline"> Software. Industry. Academia. </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://reddit.com/u/jaxrtech"><i class="fa fa-reddit-alien"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/jaxrtech"><i class="fa fa-github-alt"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://stackoverflow.com/users/809572/josh-bowden "><i class="fa fa-stack-overflow"></i></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://jbowden.me//index.xml"><i class="fa fa-rss"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="sidebar-footer footer">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li><a href="/license">Licensed under CC BY-SA 4.0 &amp; MIT License</a>
+</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">13 Jul 2016, 06:03</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/on-polymorphic-row-types/" class="post-title">On Polymorphic Row Types</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-type systems" href="https://jbowden.me//categories/type-systems">type systems</a><a class="post-category post-category-programming languages" href="https://jbowden.me//categories/programming-languages">programming languages</a>
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        <blockquote>
+<p>Snipped and backdated from a <a href="https://www.reddit.com/r/openlang/comments/4skvb9/idea_using_structural_types_with_a_lot_of_type/d5a9otc/">Reddit comment</a> of mine.</p>
+</blockquote>
+
+<p>There are a lot of interesting similarities here. I also found the original paper that the blog post was referencing: <a href="https://web.archive.org/web/20110817024554/http://legacy.cs.uu.nl/daan/download/papers/fclabels.pdf">&ldquo;First-class labels for extensible rows&rdquo;</a> with discussion on <a href="http://lambda-the-ultimate.org/node/174">Lambda the Ultimate</a>.</p>
+
+<p>I didn&rsquo;t as prominently show it in the example, but my examples use structural typing <em>and</em> <a href="https://www.reddit.com/r/openlang/comments/4qjhxg/functional/d4tqjmk">union</a> and <a href="https://www.reddit.com/r/openlang/comments/4qjhxg/functional/d4tsejw">intersection types</a> (examples from my other comments).</p>
+
+<p>It seems to me that what I&rsquo;m suggesting effectively is the same as using row polymorphism as shown in the blog post. The example from the blog post again:</p>
+
+<pre><code>f :: {a: Number, b: Number | ρ} -&gt; Number
+let f x = x with {sum: x.a + x.b}
+let answer = f {a: 1, b: 2, c: 100}
+
+// &quot;regular&quot; structural typing
+answer :: {a: Number, b: Number, sum: Number}
+
+// row polymorphism
+answer :: {a: Number, b: Number, c: Number, sum: Number}
+</code></pre>
+
+<p>And back to my made up syntax, the example above should be equivalent to the following:</p>
+
+<pre><code>f &lt;'x&gt; :: 'x: { a: Number, b: Number } -&gt; 'x &amp; { sum: Number } 
+fn f(x) {
+  x with { sum: x.a + x.b }
+}
+
+answer :: f('x) when 'x = { a: Number, b: Number, c: Number }
+       :: { a: Number, b: Number, c: Number } &amp; { sum: Number }
+       :: { a: Number, b: Number, c: Number, sum: Number }
+let answer = f { a: 1, b: 2, c: 100 }
+</code></pre>
+
+<p>To break the important line down:</p>
+
+<pre><code>f &lt;'x&gt; :: 'x: { a: Number, b: Number } -&gt; 'x &amp; { sum: Number } 
+</code></pre>
+
+<ul>
+<li><code>&lt;'x&gt;</code> declares the type variable <code>'x</code> in the scope of the type definition</li>
+
+<li><p>the function take one parameter of type <code>'x: { a: Number, b: Number }</code> (which essentially uses subtyping) to say that the type variable <code>'x</code> needs to <em>at least</em> have the structure <code>{ a: Number, b: Number }</code>.</p></li>
+
+<li><p>the function&rsquo;s return type is <code>'x &amp; { sum: Number }</code> which says the return type must be whatever type variable <code>'x</code> actually is and, in addition, <em>must also</em> have the structure <code>{ sum: Number }</code>.</p></li>
+</ul>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="content-footer footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li>All written content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons ShareAlike 4.0 International License</a>.
+<br/>
+All code is licensed under a MIT License unless otherwise stated.</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+<script src="https://jbowden.me//js/all.min.js"></script>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-xxxxxx-xx', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

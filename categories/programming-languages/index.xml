@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming Languages on Josh Bowden</title>
+    <link>https://jbowden.me/categories/programming-languages/</link>
+    <description>Recent content in Programming Languages on Josh Bowden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Jul 2016 21:20:11 +0000</lastBuildDate>
+    
+	<atom:link href="https://jbowden.me/categories/programming-languages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On (Essentially) Comonads</title>
+      <link>https://jbowden.me/posts/reddit/on-essentially-comonads/</link>
+      <pubDate>Wed, 27 Jul 2016 21:20:11 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/on-essentially-comonads/</guid>
+      <description>Snipped and backdated from a Reddit comment of mine.
+ That&amp;rsquo;s an interesting way to put. It&amp;rsquo;s almost like const correctness or checked exceptions (done right) for side-effects since you have to maintain purity with what you are calling or otherwise becoming impure.
+ there might need to be some sort of distinction between a class containing only pure functions and immutable fields, and one containing procedures and/or mutable fields</description>
+    </item>
+    
+    <item>
+      <title>On Polymorphic Row Types</title>
+      <link>https://jbowden.me/posts/reddit/on-polymorphic-row-types/</link>
+      <pubDate>Wed, 13 Jul 2016 06:03:11 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/on-polymorphic-row-types/</guid>
+      <description>Snipped and backdated from a Reddit comment of mine.
+ There are a lot of interesting similarities here. I also found the original paper that the blog post was referencing: &amp;ldquo;First-class labels for extensible rows&amp;rdquo; with discussion on Lambda the Ultimate.
+I didn&amp;rsquo;t as prominently show it in the example, but my examples use structural typing and union and intersection types (examples from my other comments).
+It seems to me that what I&amp;rsquo;m suggesting effectively is the same as using row polymorphism as shown in the blog post.</description>
+    </item>
+    
+    <item>
+      <title>Using structural types with a lot of type inference</title>
+      <link>https://jbowden.me/posts/reddit/using-structural-types-with-a-lot-of-type-inference/</link>
+      <pubDate>Wed, 13 Jul 2016 02:40:38 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/using-structural-types-with-a-lot-of-type-inference/</guid>
+      <description>Snipped and backdated from a previous Reddit post of mine.
+ As /u/x-paste was suggesting in the [Official] Object Orientation Discussion thread about ad-hoc data structures, I still think you can get the niceness and flexibility of just throwing code togeather while still having strong typing.
+That or have gradual typing to avoid the messy example I wrote for the otherwise simple eval() and can just use any like in TypeScript and don&amp;rsquo;t bother with being extremely sound and specific.</description>
+    </item>
+    
+    <item>
+      <title>On Mainstream FP</title>
+      <link>https://jbowden.me/posts/reddit/on-mainstream-fp/</link>
+      <pubDate>Fri, 08 Jul 2016 23:19:50 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/on-mainstream-fp/</guid>
+      <description>Snipped and backdated from a Reddit comment of mine.
+  If functional programming is so great, why is it still niche? We have a product that can practically eliminate runtime errors, make refactoring much easier, lighten the testing burden, all while being quite delightful to use. What’s the hold up?
+One factor is that we make things artificially hard to learn, sometimes with a seemingly pathological glee.
+ This is from the Elm&amp;rsquo;s &amp;ldquo;Let Be Mainstream!</description>
+    </item>
+    
+    <item>
+      <title>MUMPS Side Note</title>
+      <link>https://jbowden.me/posts/reddit/mumps-side-note/</link>
+      <pubDate>Thu, 07 Jul 2016 01:39:51 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/mumps-side-note/</guid>
+      <description>Snipped and backdated from a Reddit comment of mine.
+ Functional programming is fundamentally very simple, but we do a great job at over complicating things without providing the proper abstractions.
+On a side note: as horrible as MUMPS is, I still think it&amp;rsquo;s interesting having a key-value store built into the language.
+Example from Wikipedia showing how to persist values to disk:
+SET ^Car(&amp;quot;Door&amp;quot;,&amp;quot;Color&amp;quot;)=&amp;quot;BLUE&amp;quot;  It&amp;rsquo;s almost as if Redis was invented in the 90s and integrated into some horrible language.</description>
+    </item>
+    
+    <item>
+      <title>[Reddit] Intersection Types</title>
+      <link>https://jbowden.me/posts/reddit/intersection-types/</link>
+      <pubDate>Thu, 30 Jun 2016 10:27:41 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/intersection-types/</guid>
+      <description>Snipped and backdated from a Reddit comment of mine.
+ Using intersection with primitive types not make any sense since there is no common type.
+(In type theory, this is called the bottom type.)
+Now, an example of where intersection types would actually be useful is with struct or record types that you can combine togeather (i.e. &amp;ldquo;I want a type that has all properties in type A and all properties in type B&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Union Types</title>
+      <link>https://jbowden.me/posts/reddit/union-types/</link>
+      <pubDate>Thu, 30 Jun 2016 08:38:06 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/union-types/</guid>
+      <description>Snipped and backdated from a previous Reddit comment of mine.
+ Implementing union and intersection types could allow for interesting things. I know that at least Typescript and Ceylon implement them.
+One major annoyance this alleviates is strongly typed collections with mixed types.
+Now, this shouldn&amp;rsquo;t be confused with regular algebraic data types (ADTs) a la Haskell or F#&amp;rsquo;s &amp;ldquo;discriminated unions&amp;rdquo;, for example. ADTs kind of solve the problem but in a less powerful way.</description>
+    </item>
+    
+  </channel>
+</rss>

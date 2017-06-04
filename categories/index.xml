@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Josh Bowden</title>
+    <link>https://jbowden.me/categories/</link>
+    <description>Recent content in Categories on Josh Bowden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://jbowden.me/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ceylon</title>
+      <link>https://jbowden.me/categories/ceylon/</link>
+      <pubDate>Thu, 30 Jun 2016 08:38:06 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/ceylon/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Compilers</title>
+      <link>https://jbowden.me/categories/compilers/</link>
+      <pubDate>Mon, 25 Jul 2016 02:40:49 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/compilers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ctfe</title>
+      <link>https://jbowden.me/categories/ctfe/</link>
+      <pubDate>Mon, 25 Jul 2016 02:40:49 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/ctfe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dlang</title>
+      <link>https://jbowden.me/categories/dlang/</link>
+      <pubDate>Mon, 25 Jul 2016 02:40:49 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/dlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elm</title>
+      <link>https://jbowden.me/categories/elm/</link>
+      <pubDate>Fri, 08 Jul 2016 23:19:50 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/elm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fsharp</title>
+      <link>https://jbowden.me/categories/fsharp/</link>
+      <pubDate>Mon, 25 Jul 2016 02:40:49 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/fsharp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ideas</title>
+      <link>https://jbowden.me/categories/ideas/</link>
+      <pubDate>Sun, 03 Jul 2016 00:20:23 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/ideas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Industry</title>
+      <link>https://jbowden.me/categories/industry/</link>
+      <pubDate>Fri, 08 Jul 2016 23:19:50 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/industry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming Languages</title>
+      <link>https://jbowden.me/categories/programming-languages/</link>
+      <pubDate>Wed, 27 Jul 2016 21:20:11 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/programming-languages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Protonlang</title>
+      <link>https://jbowden.me/categories/protonlang/</link>
+      <pubDate>Wed, 13 Jul 2016 02:40:38 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/protonlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Type Systems</title>
+      <link>https://jbowden.me/categories/type-systems/</link>
+      <pubDate>Wed, 27 Jul 2016 21:20:11 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/type-systems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typescript</title>
+      <link>https://jbowden.me/categories/typescript/</link>
+      <pubDate>Thu, 30 Jun 2016 08:38:06 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Videos</title>
+      <link>https://jbowden.me/categories/videos/</link>
+      <pubDate>Fri, 08 Jul 2016 23:19:50 +0000</pubDate>
+      
+      <guid>https://jbowden.me/categories/videos/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

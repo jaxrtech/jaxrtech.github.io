@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>License on Josh Bowden</title>
+    <link>https://jbowden.me/license/</link>
+    <description>Recent content in License on Josh Bowden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Jun 2017 03:42:32 -0500</lastBuildDate>
+    
+	<atom:link href="https://jbowden.me/license/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

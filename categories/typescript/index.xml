@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Typescript on Josh Bowden</title>
+    <link>https://jbowden.me/categories/typescript/</link>
+    <description>Recent content in Typescript on Josh Bowden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Jun 2016 08:38:06 +0000</lastBuildDate>
+    
+	<atom:link href="https://jbowden.me/categories/typescript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Union Types</title>
+      <link>https://jbowden.me/posts/reddit/union-types/</link>
+      <pubDate>Thu, 30 Jun 2016 08:38:06 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/union-types/</guid>
+      <description>Snipped and backdated from a previous Reddit comment of mine.
+ Implementing union and intersection types could allow for interesting things. I know that at least Typescript and Ceylon implement them.
+One major annoyance this alleviates is strongly typed collections with mixed types.
+Now, this shouldn&amp;rsquo;t be confused with regular algebraic data types (ADTs) a la Haskell or F#&amp;rsquo;s &amp;ldquo;discriminated unions&amp;rdquo;, for example. ADTs kind of solve the problem but in a less powerful way.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>On (Essentially) Comonads &middot; Josh Bowden</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.21" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="On (Essentially) Comonads &middot; Josh Bowden">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="On (Essentially) Comonads &middot; Josh Bowden">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href="https://jbowden.me//css/all.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Josh Bowden" href="https://jbowden.me//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar sidebar-img-container pure-u-1 pure-u-md-1-4">
+
+    <div class="sidebar-img"></div>
+
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://jbowden.me/">Josh Bowden</a></h1>
+            <h2 class="brand-tagline"> Software. Industry. Academia. </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://reddit.com/u/jaxrtech"><i class="fa fa-reddit-alien"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/jaxrtech"><i class="fa fa-github-alt"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://stackoverflow.com/users/809572/josh-bowden "><i class="fa fa-stack-overflow"></i></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://jbowden.me//index.xml"><i class="fa fa-rss"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="sidebar-footer footer">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li><a href="/license">Licensed under CC BY-SA 4.0 &amp; MIT License</a>
+</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">27 Jul 2016, 21:20</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/on-essentially-comonads/" class="post-title">On (Essentially) Comonads</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-type systems" href="https://jbowden.me//categories/type-systems">type systems</a><a class="post-category post-category-programming languages" href="https://jbowden.me//categories/programming-languages">programming languages</a>
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        <blockquote>
+<p>Snipped and backdated from a <a href="https://www.reddit.com/r/openlang/comments/4tnir6/proposal_one_way_to_mix_oop_functional/d5tjd3r/">Reddit comment</a> of mine.</p>
+</blockquote>
+
+<p>That&rsquo;s an interesting way to put. It&rsquo;s almost like const correctness or checked exceptions (done right) for side-effects since you have to maintain purity with what you are calling or otherwise becoming impure.</p>
+
+<blockquote>
+<p>there might need to be some sort of distinction between a class containing only pure functions and immutable fields, and one containing procedures and/or mutable fields</p>
+</blockquote>
+
+<p>Yes, const correctness for types, fields, procedures, functions, and everything would be useful to know what can change what.</p>
+
+<blockquote>
+<p>for a class to be pure it must contain only functions. Similarly, [&hellip;] a function can contain only expressions, including other functions</p>
+</blockquote>
+
+<p>Makes sense. Impure code can call what it wants. Pure functions can only call pure functions. The only thing is that if you want a drop of impurity, everything starts becoming impure and it doesn&rsquo;t convey much of any information.</p>
+
+<p>Even if everything was marked as pure or impure, cost or mutable, we don&rsquo;t know if an impure procedure is writing to a file, executing a system command, sending a message over sockets, etc. We would want more granularity to know side-effects procedures are causing down the call tree.</p>
+
+<p>Similar to checked exceptions or dependency injection, an idea is that you could have a separate parameter list for resources and side-effects a procedure requires. It&rsquo;s similar to the ideas in /u/DanielWaterworth&rsquo;s <a href="https://github.com/DanielWaterworth/plastic">plastic language</a> or free moands. I also talked about this idea a while back in <a href="https://www.reddit.com/r/openlang/comments/4rdyb7/official_paradigm_discussion_functional/d50lkw7">this comment thread</a> for reference.</p>
+
+<p>Example in some made up syntax:</p>
+
+<pre><code>// `class` or whatever you want to call this
+class Cache {
+
+  ...
+
+  // technically `self` would be mutable the way I wrote this
+  fn get(self, key: String)(effects @fs: FileSystem) {
+    if (self.contains(key)) {
+      return self[key]
+    }
+
+    let value = @fs.read(key)
+    self[key] = value
+    return value;
+  }
+}
+
+// uses the default, global, &quot;real&quot; file system (&quot;business as usual&quot;)
+cache.getFromCache(&quot;foo&quot;)
+
+// uses dummy file system for unit testing
+chache.getFromCache(&quot;bar&quot;)(DummyFileSystem)
+</code></pre>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="content-footer footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li>All written content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons ShareAlike 4.0 International License</a>.
+<br/>
+All code is licensed under a MIT License unless otherwise stated.</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+<script src="https://jbowden.me//js/all.min.js"></script>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-xxxxxx-xx', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

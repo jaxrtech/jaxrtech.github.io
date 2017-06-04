@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elm on Josh Bowden</title>
+    <link>https://jbowden.me/categories/elm/</link>
+    <description>Recent content in Elm on Josh Bowden</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Jul 2016 23:19:50 +0000</lastBuildDate>
+    
+	<atom:link href="https://jbowden.me/categories/elm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On Mainstream FP</title>
+      <link>https://jbowden.me/posts/reddit/on-mainstream-fp/</link>
+      <pubDate>Fri, 08 Jul 2016 23:19:50 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/on-mainstream-fp/</guid>
+      <description>Snipped and backdated from a Reddit comment of mine.
+  If functional programming is so great, why is it still niche? We have a product that can practically eliminate runtime errors, make refactoring much easier, lighten the testing burden, all while being quite delightful to use. What’s the hold up?
+One factor is that we make things artificially hard to learn, sometimes with a seemingly pathological glee.
+ This is from the Elm&amp;rsquo;s &amp;ldquo;Let Be Mainstream!</description>
+    </item>
+    
+    <item>
+      <title>[Reddit] Intersection Types</title>
+      <link>https://jbowden.me/posts/reddit/intersection-types/</link>
+      <pubDate>Thu, 30 Jun 2016 10:27:41 +0000</pubDate>
+      
+      <guid>https://jbowden.me/posts/reddit/intersection-types/</guid>
+      <description>Snipped and backdated from a Reddit comment of mine.
+ Using intersection with primitive types not make any sense since there is no common type.
+(In type theory, this is called the bottom type.)
+Now, an example of where intersection types would actually be useful is with struct or record types that you can combine togeather (i.e. &amp;ldquo;I want a type that has all properties in type A and all properties in type B&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

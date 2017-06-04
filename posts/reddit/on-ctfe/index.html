@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>On CTFE &middot; Josh Bowden</title>
+
+    <meta name="description" content="">
+
+    <meta name="generator" content="Hugo 0.21" />
+    <meta name="twitter:card" content="summary">
+    
+    <meta name="twitter:title" content="On CTFE &middot; Josh Bowden">
+    <meta name="twitter:description" content="">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="On CTFE &middot; Josh Bowden">
+    <meta property="og:description" content="">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
+
+    <link rel="stylesheet" href="https://jbowden.me//css/all.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="alternate" type="application/rss+xml" title="Josh Bowden" href="https://jbowden.me//index.xml" />
+</head>
+<body>
+
+
+<div id="layout" class="pure-g">
+    <div class="sidebar sidebar-img-container pure-u-1 pure-u-md-1-4">
+
+    <div class="sidebar-img"></div>
+
+    <div class="header">
+        <hgroup>
+            <h1 class="brand-title"><a href="https://jbowden.me/">Josh Bowden</a></h1>
+            <h2 class="brand-tagline"> Software. Industry. Academia. </h2>
+        </hgroup>
+
+        <nav class="nav">
+            <ul class="nav-list">
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://reddit.com/u/jaxrtech"><i class="fa fa-reddit-alien"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://github.com/jaxrtech"><i class="fa fa-github-alt"></i></a>
+                </li>
+                
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://stackoverflow.com/users/809572/josh-bowden "><i class="fa fa-stack-overflow"></i></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="pure-button" href="https://jbowden.me//index.xml"><i class="fa fa-rss"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="sidebar-footer footer">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li><a href="/license">Licensed under CC BY-SA 4.0 &amp; MIT License</a>
+</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            
+            <div class="posts">
+                <h1 class="content-subhead">25 Jul 2016, 02:40</h1>
+                <section class="post">
+                    <header class="post-header">
+
+                        <a href="https://jbowden.me/posts/reddit/on-ctfe/" class="post-title">On CTFE</a>
+
+                        <p class="post-meta">
+                            
+                            
+                                under 
+                                
+                                <a class="post-category post-category-compilers" href="https://jbowden.me//categories/compilers">compilers</a><a class="post-category post-category-ctfe" href="https://jbowden.me//categories/ctfe">ctfe</a><a class="post-category post-category-fsharp" href="https://jbowden.me//categories/fsharp">fsharp</a><a class="post-category post-category-dlang" href="https://jbowden.me//categories/dlang">dlang</a>
+                            
+                        </p>
+                    </header>
+                    
+                    <div class="post-description">
+                        
+
+<blockquote>
+<p>Snipped and backdated from a <a href="https://www.reddit.com/r/openlang/comments/4uex61/topic_metaprogramming_and_compiletime_features_in/d5phpdk/">Reddit comment</a> of mine.</p>
+</blockquote>
+
+<p>The biggest win for compile-time features is eliminating the need for clunky, external build tools when you need to generate boilerplate code. (See <a href="http://stackoverflow.com/a/4712064/809572">F#&rsquo;s type providers</a>)</p>
+
+<p>Instead, you can write functions that run at compile-time to generate ASTs for you instead of mudging with text source code.</p>
+
+<p>This feature in general is called <a href="https://en.wikipedia.org/wiki/Compile_time_function_execution">compile-time function execution (CTFE)</a>.</p>
+
+<hr />
+
+<h2 id="pros">Pros</h2>
+
+<p>The common scenario is that you have a pre-existing schema you want to generate code from (e.g. an SQL database or a web service using JSON, XML, Protobufs, <abbr title="SOAP">or an overhyped four-letter acronym from the early-2000s</abbr>).</p>
+
+<p>CTFE solves lots of problems with &ldquo;traditional&rdquo; text-based code-gen:</p>
+
+<ul>
+<li><p>Since you&rsquo;re generating text instead of an actual AST, there is nothing stopping the tool from generating invalid source code the doesn&rsquo;t compile. You end up working backward figuring out where you went wrong.</p>
+
+<ul>
+<li>&hellip;with CTFE, you&rsquo;re working with the AST of the language (along the lines of Lisp macros that are executed at compile-time). Given a strongly typed language, invalid ASTs are compiler errors in the first place.</li>
+</ul></li>
+
+<li><p>Generated source code can easily get out of sync with the source schema (e.g. forgot to regen the code after adding a column, etc.)</p>
+
+<ul>
+<li>&hellip;with CTFE, the schema can be read during development time to allow for code completion. Out of sync code becomes a compiler error, not a run-time error.</li>
+</ul></li>
+
+<li><p>Controlling the source code generated generally is limited or non-existent, or requires dealing with extra configuration files (or some dynamically-loaded library reflection magic).</p>
+
+<ul>
+<li>&hellip;with CTFE, everything is just part of the code base; you can just pass a value to a function.</li>
+</ul></li>
+</ul>
+
+<p>Other nice CTFE use cases:</p>
+
+<ul>
+<li>&ldquo;Strongly typed&rdquo; strings: compile JSON and XML strings into actual values, safe string interpolation</li>
+<li>Partial evaluation: pre-compute expressions ahead-of-time instead of at runtime (C++&rsquo;s <code>constexpr</code>)</li>
+<li>AST metaprogramming: generate types, functions bodies, etc.</li>
+<li>Anything else you might want to do at compile-time&hellip;</li>
+</ul>
+
+<hr />
+
+<h2 id="cons">Cons</h2>
+
+<p>The major con with implementing CTFE is that introduces a great deal of complexity into the compiler implementation and needs to be well designed.</p>
+
+<ul>
+<li><p>You end up with a dependency graph of compile-time and run-time code that depends on the output of a compile-time function (hopefully you have a keyword that distinguishes what functions you intend to CTFE).</p></li>
+
+<li><p>Because of that, you have to figure the order in which you need to run each compile-time function before compiling the dependent, &ldquo;regular&rdquo; code that executes at run-time.</p></li>
+
+<li><p>CTFE is going to run really slow unless you can run as much as possible in parallel.</p></li>
+</ul>
+
+                    </div>
+                    
+                </section>
+            </div>
+            <div class="content-footer footer">
+    <div class="pure-menu pure-menu-horizontal pure-menu-open">
+        <ul>
+    <li>Copyright © 2017 Josh Bowden</li>
+    <li>All written content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons ShareAlike 4.0 International License</a>.
+<br/>
+All code is licensed under a MIT License unless otherwise stated.</li>
+    <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
+</ul>
+
+
+    </div>
+</div>
+<script src="https://jbowden.me//js/all.min.js"></script>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-xxxxxx-xx', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
