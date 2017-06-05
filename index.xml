@@ -13,10 +13,10 @@
     
     <item>
       <title>On (Essentially) Comonads</title>
-      <link>https://jbowden.me/posts/reddit/on-essentially-comonads/</link>
+      <link>https://jbowden.me/posts/reddit/on-essentially-coeffects/</link>
       <pubDate>Wed, 27 Jul 2016 21:20:11 +0000</pubDate>
       
-      <guid>https://jbowden.me/posts/reddit/on-essentially-comonads/</guid>
+      <guid>https://jbowden.me/posts/reddit/on-essentially-coeffects/</guid>
       <description>Snipped and backdated from a Reddit comment of mine.
  That&amp;rsquo;s an interesting way to put. It&amp;rsquo;s almost like const correctness or checked exceptions (done right) for side-effects since you have to maintain purity with what you are calling or otherwise becoming impure.
  there might need to be some sort of distinction between a class containing only pure functions and immutable fields, and one containing procedures and/or mutable fields</description>
