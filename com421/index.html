@@ -4,6 +4,20 @@
     <meta charset="utf-8">
     <title>Josh Bowden | Home</title>
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Include Font Awesome Icons for resume download link -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css"
+      integrity="sha384-QokYePQSOwpBDuhlHOsX0ymF6R/vLk/UQVz3WHa6wygxI5oGTmDTv8wahFOSspdm"
+      crossorigin="anonymous"
+    >
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css"
+      integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq"
+      crossorigin="anonymous"
+    >
   </head>
   <body>
     <header>
@@ -12,15 +26,39 @@
 
       <nav>
         <ul>
-          <li>Resume</li>
-          <li>Projects</li>
-          <li>Travel</li>
+          <li class="active"><a href="index.html">About Me</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="projects">Projects</a></li>
+          <li><a href="travel">Travel</a></li>
         </ul>
       </nav>
     </header>
+
     <main>
       <h1>About Me</h1>
-      <p>Hey, my name is Josh! I'm a third-year computer science stydent</p>
+      <a class="download" href="resume.pdf"><i class="fas fa-file-pdf"></i> Download Resume (.pdf)</a>
+      <img src="me.jpg" alt="Portrait of Josh" width="158" height="158" />
+      <p>Hey, my name is Josh! I'm a third-year computer science undergrad currently pursing a Bacchelors of Science in Computer Science at the Illinois Instiute of Technology. I'm originally from the suburbs outside of Atlanta, GA named Peachtree Corners. My current interests within CS focus on programming language, software architecture, and learning how to make programming more approachable for everyone.</p>
+
+      <h2>On the Future of Programming</h2>
+      <figure>
+      <img
+        src="bret_victor.png"
+        alt="Portrait of Josh"
+        width="158"
+        height="210"
+      >
+      <figcaption>
+        <a href="https://worrydream.com">Bret Victor</a> delivering <a href="https://vimeo.com/71278954">"The Future of Programming" talk</a> at Dropbox's DBX
+        conference in 2013 <a href="https://en.wikipedia.org/wiki/Bret_Victor">[Wikipedia]</a> <a
+          href="https://creativecommons.org/licenses/by/3.0/"
+        >(CC BY 3.0)</a>
+      </figcaption>
+      </figure>
+    </img>
+      <p>One area that has constantly interested me in CS is how we express our ideas using technology. Although, a majority of society I stuck with the notion of programming&mdash;from what has been brough up from the "dark ages" of the 1960s&mdash;that being typing in some sort of text editor or terminal, compiling code, juggling everything in your head.</p>
+
+      <p>The idea is that instead of treating code like this arcane <em>magic</em>, we can instead move towards "humane" mediums that require less tedium and allow for greater explination and exploration. Bret Victor, as picture to the left, throughly emphasizes in his many talk including this very popular one. Even though he is sarcasticly dressed up as one would be back in the day while he uses an overhead projector, he proves a point that not much has change fundamentally sadly.</p>
     </main>
   </body>
 </html>
