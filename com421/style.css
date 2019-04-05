@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600|Source+Sans+Pro');
+
+body, html {
+  padding: 0;
+  margin: 0;
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  background: rgb(44, 91, 145);
+  color: rgb(255, 255, 255);
+  padding-top: 0.5em;
+}
+
+header h2 {
+  margin: 0em;
+}
+
+nav {
+  margin-top: 0.5em;
+  background-color: #1C3B5E;
+}
+
+nav ul {
+  display: inline;
+  padding-inline-start: 0;
+}
+
+nav ul li {
+  display: inline;
+  padding-left: 2em;
+  padding-right: 2em;
+  border: solid #fff;
+  border-width: 2px 2px 0px 0px;
+}
+
+p {
+  margin: 0px 0px 0px 0px;
+}
